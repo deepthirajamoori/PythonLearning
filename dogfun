@@ -1,0 +1,40 @@
+def maxInDict(**kywrd):
+    for key,value in kywrd.items():
+        print(key,value)
+    max_key = max(kywrd, key=kywrd.get)
+    return max_key
+
+#my_dict = {'a':-1, 'b':-2, 'c':-3}
+#print(maxInDict(**my_dict))
+
+import random
+import string
+my_dict = {}
+words = ['done', 'ok']
+def randomString(stringLength=3):
+    """Generate a random string variable of fixed length """
+    letters = string.ascii_lowercase
+    return ''.join(random.choice(letters) for i in range(stringLength))
+
+#print ("Random String is ", randomString() )
+
+def takeInput(prompt):
+    while True:
+        try:
+            value = input(prompt)
+            if value in words or isinstance(int(value), int) == True:
+                if value in ('done', 'ok'):
+                    if not bool(my_dict):
+                        return "Please try again later!!"
+                    else:
+                        print(my_dict)
+                        return maxInDict(**my_dict)
+                else:
+                    key = randomString()
+                    my_dict.update( {key : int(value)} )
+            else:
+                print("Please enter ONLY integer value greater than 0 !!")
+        except ValueError:
+            print("Oops!  Enter either an integer value or 'ok/done' keywords.  Try again...")
+
+print(takeInput("Enter your integer value"))

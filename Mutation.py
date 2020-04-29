@@ -1,0 +1,5 @@
+k,arr = int(input()),list(map(int,input().split()))
+captain_set = set(arr)
+#print(sum(captain_set))
+#print(sum(arr))
+print(((sum(captain_set)*k)-(sum(arr)))//(k-1))
